@@ -3,4 +3,9 @@
 
     <!-- GameScreen -->
     <string name="Accuracy">Accuracy: %d</string>
+    <string name="guessCount">%d/6</string>
+    <string name="gameCount">/10</string>
+    <string name="instructions">Guess the word!</string>
+    <string name="wrong_guess">Wrong Guess!</string>
+    <string name="enter_your_word">Enter your word</string>
 </resources>
