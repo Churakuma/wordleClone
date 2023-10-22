@@ -50,6 +50,13 @@ fun LoginScreen(
             fontWeight = FontWeight.Bold
         )
 
+        if (isError){
+            Text(
+                text = loginUiState?.loginError ?: "Unknown Error",
+                color = Color.Red
+            )
+        }
+
         OutlinedTextField(
             modifier = Modifier
                 .padding(16.dp)
@@ -98,9 +105,8 @@ fun LoginScreen(
             CircularProgressIndicator()
         }
 
-        // TODO: Unblock the below once Firebase has been added
-        /**
-        LaunchedEffect(key1 = loginViewModel?.hasUser) {
+        // TODO: Finish Navigation
+        /**LaunchedEffect(key1 = loginViewModel?.hasUser) {
             if(loginViewModel?.hasUser == true) {
                 onNavToHomePage.invoke()
             }
@@ -108,6 +114,7 @@ fun LoginScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(
     loginViewModel: LoginViewModel? = null
@@ -116,7 +123,96 @@ fun SignUpScreen(
     val isError = loginUiState?.signUpError != null
     val context = LocalContext.current
 
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Sign Up",
+            style = MaterialTheme.typography.displayLarge,
+            fontWeight = FontWeight.Bold
+        )
 
+        if (isError){
+            Text(
+                text = loginUiState?.loginError ?: "Unknown Error",
+                color = Color.Red
+            )
+        }
+
+        OutlinedTextField(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            value = loginUiState?.userNameSignUp?: "",
+            onValueChange = { loginViewModel?.onUserNameSignUpChange(it) },
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Person, contentDescription = null)
+            },
+            label = {
+                Text(text = "Email")
+            },
+            isError = isError
+        )
+        OutlinedTextField(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            value = loginUiState?.passwordSignUp?: "",
+            onValueChange = { loginViewModel?.onPasswordSignUpChange(it) },
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Lock, contentDescription = null)
+            },
+            label = {
+                Text(text = "Password")
+            },
+            visualTransformation = PasswordVisualTransformation(),
+            isError = isError
+        )
+        OutlinedTextField(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            value = loginUiState?.confirmPasswordSignUp?: "",
+            onValueChange = { loginViewModel?.onConfirmPasswordSignUpChange(it) },
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Lock, contentDescription = null)
+            },
+            label = {
+                Text(text = "Confirm Password")
+            },
+            visualTransformation = PasswordVisualTransformation(),
+            isError = isError
+        )
+
+        Button(onClick = { loginViewModel?.createUser(context) }) {
+            Text(text = "Sign Up")
+        }
+        Spacer(modifier = Modifier.size(16.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Already have an Account?")
+            Spacer(modifier = Modifier.size(8.dp))
+            //TODO: Finish Navigation
+            /** TextButton(onClick = { onNavToLoginPage.invoke() }) {
+                Text(text = "Sign In")
+            }*/
+        }
+
+        if (loginUiState?.isLoading == true) {
+            CircularProgressIndicator()
+        }
+
+        //TODO: Finish Navigation
+        /**LaunchedEffect(key1 = loginViewModel?.hasUser) {
+            if(loginViewModel?.hasUser == true) {
+                onNavToHomePage.invoke()
+            }
+        }*/
+    }
 }
 
 @Preview(showSystemUi = true)

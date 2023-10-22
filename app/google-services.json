@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "32494138390",
+    "project_id": "wordleclone-32015",
+    "storage_bucket": "wordleclone-32015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32494138390:android:e395547c02287fb0aa3137",
+        "android_client_info": {
+          "package_name": "com.example.wordleclone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS9n3dmigelDSfkODWOQMuwWNIFpprXrs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
