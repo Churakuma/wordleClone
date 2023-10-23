@@ -10,6 +10,7 @@ import com.example.wordleclone.Data.allWords
 import com.example.wordleclone.R
 
 class GameViewModel: ViewModel() {
+
     private lateinit var currentWord: String
     private var usedWords: MutableSet<String> = mutableSetOf()
     private var guesses: MutableSet<String> = mutableSetOf()
@@ -18,7 +19,6 @@ class GameViewModel: ViewModel() {
 
     var userGuess by mutableStateOf("")
         private set
-
 
     /**
      * Function to pick a random word from the given words in allWords
@@ -38,9 +38,8 @@ class GameViewModel: ViewModel() {
      */
     private fun validateUserGuess(
         context: Context,
-        userGuess: String,
-        guessIsValid: Boolean
-    ): Boolean {
+        userGuess: String
+    ) {
         if (userGuess.length != 5) {
             Toast.makeText(context,
                 context.getString(R.string.Guess_Invalid_Length), Toast.LENGTH_SHORT).show()
@@ -52,12 +51,19 @@ class GameViewModel: ViewModel() {
                 context.getString(R.string.Guess_Valid_Word), Toast.LENGTH_SHORT).show()
         } else {
             guesses.add(userGuess)
-            return true // Return true if the guess has been validated
+            //guessIsValid = true // Return true if the guess has been validated
+            checkUserGuess(userGuess)
         }
-        return validateUserGuess(context, userGuess, guessIsValid)
     }
 
-    public fun startGame() {
+    /**
+     * Function to check the correctness of the player's guess against the target word.
+     */
+    private fun checkUserGuess(userGuess: String) {
+
+    }
+
+    private fun startGame() {
         pickRandomWord()
     }
 
