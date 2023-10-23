@@ -166,6 +166,7 @@ fun accuracyCard(accuracy: Int, modifier: Modifier = Modifier) {
     }
 }
 
+/**
 @Preview(showSystemUi = true)
 @Composable
 fun PrevGameScreen() {
@@ -173,3 +174,4 @@ fun PrevGameScreen() {
         HomeScreen()
     }
 }
+        */

@@ -8,4 +8,7 @@
     <string name="instructions">Guess the word!</string>
     <string name="wrong_guess">Wrong Guess!</string>
     <string name="enter_your_word">Enter your word</string>
+    <string name="Guess_Invalid_Length">Please enter a word of 5 letters.</string>
+    <string name="Unique_Guess_Request">Please enter a new guess.</string>
+    <string name="Guess_Valid_Word">Please enter a valid word.</string>
 </resources>
