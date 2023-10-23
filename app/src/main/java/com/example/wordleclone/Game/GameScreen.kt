@@ -170,6 +170,6 @@ fun accuracyCard(accuracy: Int, modifier: Modifier = Modifier) {
 @Composable
 fun PrevGameScreen() {
     WordleCloneTheme {
-        HomeScreen(gameViewModel = )
+        HomeScreen()
     }
 }
